@@ -2,8 +2,6 @@
 
 NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (RAG) conversational platform designed to parse dense academic text documents and provide immediate contextual answers. Featuring a striking, high-contrast **Dark Neo-Brutalist** design aesthetic, the application operates with a fully serverless backend layout optimized for fast document intelligence.
 
-🔗 **Live Deployment:** [notebotai.streamlit.app](https://notebotai.streamlit.app)
-
 ---
 
 ##  Key Architectural Features
@@ -25,3 +23,40 @@ NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (R
 * **Database Layer:** FAISS (CPU Optimized)
 
 ---
+
+## System Architecture Diagram
+
+```mermaid
+graph TD
+    %% Styling Configuration
+    classDef default fill:#121212,stroke:#00ffcc,stroke-width:2px,color:#fff;
+    classDef user fill:#00ffcc,stroke:#000,stroke-width:2px,color:#000;
+    classDef external fill:#222,stroke:#ff0055,stroke-width:2px,color:#ff0055;
+
+    %% Workflow Nodes & Styling
+    User([🎓 User Interaction])
+    class User user;
+    
+    StreamlitUI[Streamlit Dark Neo-Brutalist UI]
+
+    %% Connections
+    User -->|Uploads PDF| StreamlitUI
+    
+    subgraph Data Ingestion Pipeline
+        StreamlitUI --> PyPDF[PyPDF Document Loader]
+        PyPDF --> TextSplitter[LangChain Text Splitter]
+        TextSplitter -->|Text Chunks| HFEmbed[HuggingFace Hub: all-MiniLM-L6-v2]
+        HFEmbed -->|Vector Embeddings| FAISS[(FAISS Vector Matrix)]
+    end
+
+    User -->|Submits Question| StreamlitUI
+    StreamlitUI -->|User Query| SimSearch{FAISS Similarity Search}
+    FAISS -.-> SimSearch
+    
+    subgraph Contextual Inference Engine
+        SimSearch -->|Top Matching Chunks| PromptTemplate[LangChain ChatPromptTemplate]
+        PromptTemplate -->|Structured Payload| GroqAPI[Groq Inference Engine]
+        GroqAPI -->|llama-3.1-8b-instant| GenResponse[Contextual Answer]
+    end
+
+    GenResponse -->|Render Text Layer| StreamlitUI
