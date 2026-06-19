@@ -34,7 +34,7 @@ graph TD
     classDef external fill:#222,stroke:#ff0055,stroke-width:2px,color:#ff0055;
 
     %% Workflow Nodes & Styling
-    User([🎓 User Interaction])
+    User([User Interaction])
     class User user;
     
     StreamlitUI[Streamlit Dark Neo-Brutalist UI]
