@@ -1,4 +1,4 @@
-# NoteBot AI 🎓 | Academic RAG Tutor
+# NoteBot AI  | Academic RAG Tutor
 
 NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (RAG) conversational platform designed to parse dense academic text documents and provide immediate contextual answers. Featuring a striking, high-contrast **Dark Neo-Brutalist** design aesthetic, the application operates with a fully serverless backend layout optimized for fast document intelligence.
 
@@ -6,7 +6,7 @@ NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (R
 
 ---
 
-## ⚡ Key Architectural Features
+##  Key Architectural Features
 
 * **High-Speed Cloud Computation Layer:** Uses the Groq API running `llama-3.1-8b-instant` to generate contextual analysis with near-zero latency.
 * **In-Memory Embedding Vectorization:** Completely serverless chunk vectorization powered by HuggingFace's open-source `all-MiniLM-L6-v2` transformers model.
@@ -16,7 +16,7 @@ NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (R
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 * **Frontend Framework:** Streamlit (v1.x)
 * **Orchestration Matrix:** LangChain / LangChain-Classic Core
@@ -25,12 +25,3 @@ NoteBot AI is a cloud-native, high-performance Retrieval-Augmented Generation (R
 * **Database Layer:** FAISS (CPU Optimized)
 
 ---
-
-## ⚙️ Local Development Setup
-
-To replicate this environment locally, make sure you have Python 3.10+ configured on your system, then follow these instructions:
-
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/aathira-a-s/NoteBotAI.git](https://github.com/aathira-a-s/NoteBotAI.git)
-cd NoteBotAI
